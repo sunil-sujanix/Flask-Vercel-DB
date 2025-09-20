@@ -1,3 +1,3 @@
 from app import create_app
 
-app = create_app()  # Vercel looks for this variable
+app = create_app()  # ✅ this is what Vercel will serve

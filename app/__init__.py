@@ -13,8 +13,7 @@ def create_app():
     db.init_app(app)
     migrate.init_app(app, db)
 
-    # Register blueprints or routes here
-    from app.routes import main_bp
-    app.register_blueprint(main_bp)
+    from app.routes import register_routes
+    register_routes(app)  # ✅ attaches all routes to this app object
 
     return app
