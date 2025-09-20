@@ -9,10 +9,6 @@ def index():
     return render_template('index.html')
 
 
-@app.route('/getemails')
-def emails():
-    res=Subscription.query.all()
-    return jsonify({'data':[{"id":j.id,"email":j.email }for j in res]})
 
 
 
