@@ -1,30 +1,20 @@
-from flask import Flask,jsonify
-from flask_migrate import Migrate
+from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
 from config import Config
 
+db = SQLAlchemy()
+migrate = Migrate()
 
+def create_app():
+    app = Flask(__name__)
+    app.config.from_object(Config)
 
-app=Flask(__name__)
+    db.init_app(app)
+    migrate.init_app(app, db)
 
-app.config.from_object(Config)
+    # Register blueprints or routes here
+    from app.routes import main_bp
+    app.register_blueprint(main_bp)
 
-db=SQLAlchemy(app)
-
-migrate=Migrate(app,db)
-
-
-
-
-from app import routes,models
-from app.models import Subscription
-
-
-
-@app.route('/getemails')
-def emails():
-    res=Subscription.query.all()
-    return jsonify({'data':[{"id":j.id,"email":j.email }for j in res]})
-
-
-
+    return app
