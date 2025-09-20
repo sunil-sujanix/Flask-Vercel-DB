@@ -1,8 +1,8 @@
 """Create Subscription Model
 
-Revision ID: 1cac4a3534a4
+Revision ID: 1e2c77626929
 Revises: 
-Create Date: 2025-09-20 19:42:58.218525
+Create Date: 2025-09-20 20:09:37.233564
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '1cac4a3534a4'
+revision = '1e2c77626929'
 down_revision = None
 branch_labels = None
 depends_on = None
